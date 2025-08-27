@@ -21,7 +21,7 @@ function SlidePagination(props: SlidePaginationProps) {
         onChange={props.onSlideNumberChange}
       />
       <SlidePaginationFiller />
-      <Button round>?</Button>
+      <Button $round>?</Button>
     </SlidePaginationContainer>
   );
 }

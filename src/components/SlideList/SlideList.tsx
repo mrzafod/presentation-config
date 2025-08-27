@@ -6,7 +6,6 @@ import {
   SlideListNumber,
 } from './SlideList.style';
 
-// Lets extend the interface later, providing more capabilities
 interface ISlide {
   id: string;
   imageUrl: string;
@@ -15,12 +14,10 @@ interface ISlide {
 export type SlideListProps = {
   slides: ISlide[];
   slideNumber: number;
-  // Later it is beter to use slide.id
   onSlideChange: (slideNumber: number) => void;
 };
 
 function SlideList({ onSlideChange, slides, slideNumber }: SlideListProps) {
-  // Scroll to current slide
   useEffect(() => {
     requestAnimationFrame(() => {
       const element = document.getElementById(`slide-${slideNumber}`);

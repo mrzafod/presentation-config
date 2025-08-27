@@ -23,9 +23,3 @@ export const PaginationPageCurrent = styled(PaginationPage)((props) => ({
 export const PaginationPageTotal = styled(PaginationPage)((props) => ({
   color: props.theme.colors.text,
 }));
-
-export const HelpModalWindow = styled.dialog.attrs<{ open?: boolean }>(
-  (props) => ({
-    open: props.open,
-  })
-);

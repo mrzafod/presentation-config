@@ -1,11 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-/**
- * A hook that syncs state with localStorage.
- * @param key - localStorage key
- * @param defaultValue - default value if nothing is in storage
- */
-export function useLocalStorage<T>(key: string, defaultValue?: T) {
+export function useLocalStorage<T = string>(key: string, defaultValue?: T) {
   const [value, setValue] = useState<T | undefined>(() => {
     if (typeof window === 'undefined') return defaultValue;
     try {
@@ -25,5 +20,5 @@ export function useLocalStorage<T>(key: string, defaultValue?: T) {
     }
   }, [key, value]);
 
-  return [value, setValue] as const; // readonly
+  return [value, setValue] as const;
 }

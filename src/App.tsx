@@ -23,8 +23,6 @@ function App() {
     [setPageNumber]
   );
 
-  // const on
-
   const onSave = useCallback(() => {}, []);
   const onDiscard = useCallback(() => {}, []);
 

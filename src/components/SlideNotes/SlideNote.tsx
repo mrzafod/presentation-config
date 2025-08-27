@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useDebounceCallback } from '../../hooks/useDebounceCallback';
+import { useDeferredValue, useEffect, useRef, useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { SlideNoteContainer, SlideNoteTextarea } from './SlideNote.style';
 
@@ -12,14 +11,22 @@ function SlideNote({ slideId }: SlideNoteProps) {
     'notes',
     {}
   );
-  const [note, setNote] = useState<string>(notes?.[slideId] || '');
-  useEffect(() => setNote(notes?.[slideId] || ''), [slideId, notes, setNote]);
+  const [note, setNote] = useState<string>('');
+  const deferredNote = useDeferredValue(note);
 
-  // Lets reduce calls to LocalStorage
-  const commitToLocalStorage = useDebounceCallback(
-    () => saveNotes({ ...notes, [slideId]: note }),
-    1e3
-  );
+  const hasChangedByInputRef = useRef(false);
+
+  useEffect(() => {
+    setNote(notes?.[slideId] || '');
+    hasChangedByInputRef.current = false;
+  }, [slideId, notes]);
+
+  useEffect(() => {
+    if (hasChangedByInputRef.current && notes?.[slideId] !== deferredNote) {
+      saveNotes((prev) => ({ ...prev, [slideId]: deferredNote }));
+      hasChangedByInputRef.current = false;
+    }
+  }, [deferredNote, slideId, notes, saveNotes]);
 
   return (
     <SlideNoteContainer>
@@ -30,7 +37,7 @@ function SlideNote({ slideId }: SlideNoteProps) {
         value={note}
         onChange={(e) => {
           setNote(e.target.value);
-          commitToLocalStorage();
+          hasChangedByInputRef.current = true;
         }}
       />
     </SlideNoteContainer>

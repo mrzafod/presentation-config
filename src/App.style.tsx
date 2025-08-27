@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-// container (flex)
-// -----------------------------
-// slide view   |    nav column
-// -----------------------------
-// aside buttons
-
 export const AppContainer = styled.main({
   display: 'flex',
   flexDirection: 'row',
@@ -37,11 +31,11 @@ export const AppSlideView = styled.div((props) => ({
 export const AppSlideViewContainer = styled.div({
   flexGrow: 1,
   overflow: 'hidden',
-})
+});
 
 export const AppSlideViewControls = styled.div({
   flexShrink: 1,
-})
+});
 
 export const AppSlideNav = styled.nav((props) => ({
   flexShrink: 1,

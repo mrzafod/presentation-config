@@ -6,11 +6,11 @@ export type FootorButtonsProps = {
   onDiscard?: () => void;
 };
 
-function FooterButtons(props?: FootorButtonsProps) {
+function FooterButtons(props: FootorButtonsProps) {
   return (
     <FooterButtonsContainer>
-      <Button onClick={() => props?.onDiscard?.()}>Discard</Button>
-      <Button primary onClick={() => props?.onSave?.()}>
+      <Button onClick={() => props.onDiscard?.()}>Discard</Button>
+      <Button $primary onClick={() => props.onSave?.()}>
         Save ➜
       </Button>
     </FooterButtonsContainer>

@@ -36,7 +36,7 @@ export const SlideListItem = styled.li<{ isActive?: boolean }>((props) => ({
   flexWrap: 'nowrap',
   background: props.isActive ? 'rgba(20, 106, 255, 0.12)' : 'none',
   cursor: 'grab',
-  height: '20%', // 5 items visible
+  height: '20%',
   userSelect: 'none',
 
   [`& > ${SlideListNumber}`]: {

@@ -2,7 +2,7 @@ import type { DefaultTheme } from 'styled-components';
 
 export const theme: DefaultTheme = {
   colors: {
-    primary: '#146aff', // Wooclap blue
+    primary: '#146aff',
     secondary: '#f5f5f5',
     text: '#333333',
     background: '#ffffff',

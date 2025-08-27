@@ -9,10 +9,3 @@ export const SlidePaginationContainer = styled.div((props) => ({
 export const SlidePaginationFiller = styled.div({
   flexGrow: 1,
 });
-
-// @TODO: Style modal dialog for Help section
-export const HelpModalWindow = styled.dialog.attrs<{ open?: boolean }>(
-  (props) => ({
-    open: props.open,
-  })
-);

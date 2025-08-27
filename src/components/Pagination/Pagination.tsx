@@ -8,8 +8,8 @@ export type PaginationProps = {
   onChange: (pageNumber: number) => void;
 };
 
-function Pagination(props?: PaginationProps) {
-  const { maxPages = 0, pageNumber = 0, onChange } = props || {};
+function Pagination(props: PaginationProps) {
+  const { maxPages = 0, pageNumber = 0, onChange } = props;
 
   const onClickIncrement = useCallback(
     (increment: -1 | 1) => {
@@ -23,11 +23,11 @@ function Pagination(props?: PaginationProps) {
 
   return (
     <PaginationContainer>
-      <Button round onClick={() => onClickIncrement(-1)}>«</Button>
+      <Button $round onClick={() => onClickIncrement(-1)}>«</Button>
       <PaginationPageCurrent>{pageNumber + 1}</PaginationPageCurrent>
       <span>/</span>
       <PaginationPageTotal>{maxPages + 1}</PaginationPageTotal>
-      <Button round onClick={() => onClickIncrement(+1)}>»</Button>
+      <Button $round onClick={() => onClickIncrement(+1)}>»</Button>
     </PaginationContainer>
   );
 }
