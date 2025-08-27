@@ -8,11 +8,11 @@ import {
   AppSlideViewControls,
 } from './App.style';
 import FooterButtons from './components/FooterButtons/FooterButtons';
+import PresentationNotes from './components/PresentationNotes/PresentationNotes';
 import SlideList from './components/SlideList/SlideList';
 import SlidePagination from './components/SlidePagination/SlidePagination';
 import SlideView from './components/SlideViewer/SlideViewer';
 import { usePresentationData } from './hooks/usePresentationData';
-import SlideNote from './components/SlideNotes/SlideNote';
 
 function App() {
   const data = usePresentationData();
@@ -26,15 +26,17 @@ function App() {
   const onSave = useCallback(() => {}, []);
   const onDiscard = useCallback(() => {}, []);
 
+  const { id, imageUrl } = data.slides[pageNumber] || {};
+
   return (
     <AppContainer>
       <AppSlideView>
         <AppSlideViewContainer>
-          <SlideView imageUrl={data.slides[pageNumber]?.imageUrl} />
+          <SlideView imageUrl={imageUrl} />
         </AppSlideViewContainer>
         <AppSlideViewControls>
           <SlidePagination {...{ pageNumber, maxPages, onSlideNumberChange }} />
-          <SlideNote slideId={data.slides[pageNumber]?.id} />
+          <PresentationNotes key={id} slideId={id} />
         </AppSlideViewControls>
       </AppSlideView>
       <AppSlideNav>
